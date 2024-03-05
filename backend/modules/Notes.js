@@ -1,4 +1,5 @@
 const moongoose = require('mongoose');
+const { Schema } = moongoose;
 const Noteschema = new Schema({
     title:{
     type:String,
@@ -19,4 +20,4 @@ const Noteschema = new Schema({
      }
 
 });
-module.exports=moongoose.model('motes',Noteschema);
+module.exports=moongoose.model('notes',Noteschema);
