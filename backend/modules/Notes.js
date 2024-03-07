@@ -1,14 +1,17 @@
-const moongoose = require('mongoose');
-const { Schema } = moongoose;
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
 const Noteschema = new Schema({
+    user:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'user'
+    },
     title:{
     type:String,
     requird :true
 },
     description:{
     type:String,
-    requird :true,
-    unique:true
+    requird :true 
 },
      date:{
     type:Date,
@@ -20,4 +23,4 @@ const Noteschema = new Schema({
      }
 
 });
-module.exports=moongoose.model('notes',Noteschema);
+module.exports=mongoose.model('notes',Noteschema);

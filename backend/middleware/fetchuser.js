@@ -1,6 +1,6 @@
 var jwt = require('jsonwebtoken');
 
-const JWT_SECRET = ('priyanshlovejesikanomore');
+const JWT_SECRET = 'priyanshlovejesikanomore';
 
 
 
@@ -19,7 +19,7 @@ try {
     // req.user=data.user;
      next();
 } catch (error) {
-    res.status(401).send({error:"servies problem 401"})
+    res.status(401).send({error:"servies problem dume 401"})
     console.log(error)
 }
 

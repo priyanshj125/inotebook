@@ -85,20 +85,7 @@ router.post('/login', [
 
 
 })
-//get user detail byg usin get and /api/auth/getuser
-// router.post('/getuser', fetchuser, async (req, res) => {
-  
 
-// try {
-    
-//      userId = req.user.id;  
-//     const user = await User.findById(userId).select("-password")
-//     res.send(user)    
-// } catch (error) {
-//     res.status(500).send('internal Server Error')
-//     console.error(error.message)
-    
-// }})
 router.post('/getuser', fetchuser, async (req, res) => {
     try {
         console.log("this is ru");
