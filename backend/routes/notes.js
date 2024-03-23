@@ -24,13 +24,13 @@ router.post('/addnotes', fetchuser, [
     const { title, description, tag } = req.body;
     const error = validationResult(req);
     if (!error.isEmpty()) {
-      return res.status(400).json({ error: error.array() });
+      return res.status(410).json({ error: error.array() });
     }
     const notes = new Note({ title, description, user: id, tag });
     const notessave = await notes.save()
     res.json(notes);
   } catch (error) {
-    res.status(400).send({ error: "servies problem dume part 2 401" })
+    res.status(420).send({ error: "servies problem dume part 2 401" })
     console.log(error)
   }
 });
