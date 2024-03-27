@@ -59,7 +59,7 @@ router.post('/login', [
         return res.status(400).json({ error: errors.array() })
     }
     const { email, password } = req.body;
-    try {
+    try {pcasdkca
         let user =await User.findOne({ email: email })
         if (!user) {
             return res.status(400).json({ error: 'email not found' })

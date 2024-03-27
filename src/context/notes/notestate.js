@@ -6,7 +6,7 @@ import { useState } from "react";
 const NoteState=(props)=>{
   const Host= "http://localhost:5000"
     const notesintial=[];
-    //get all notes
+    //get all notesf
     const [notes,setNotes]=useState(notesintial);
     //add notes
 
@@ -17,12 +17,10 @@ const NoteState=(props)=>{
           "Content-Type": "application/json",
           "auth_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTc4MzQ0M2M5ZGE5ZTQxZTFkYmMzNiIsIm5hbWUiOiJwcml5YW5zaCIsImVtYWlsIjoiamVza2x2cGFzbmhAZ2FtaWwuY29tIiwiaWF0IjoxNzA5NjcxMjM2fQ.4SpERJuaLyHs7rBOjpAVcrDUZhRstE1EmweYcT__Xn4"
         },
-       
-        // body: JSON.stringify(title,description,tag), 
+      
       });
       console.log("fetch all data successfully");
       const json = await response.json();
-      console.log(json);
       setNotes(notes.concat(json));
     }
 
@@ -40,6 +38,7 @@ const NoteState=(props)=>{
            
             body: JSON.stringify({title,description,tag}), 
           });
+          const json = await response.json();
         
           console.log("adding  new note");
           const note= {
@@ -50,9 +49,7 @@ const NoteState=(props)=>{
             "tag": tag,
             "__v": 0
           };
-          // const note = await response.json();
           setNotes(notes.concat(note))
-          // setNotes(notes.concat(note))
 
 
 
@@ -92,20 +89,21 @@ const NoteState=(props)=>{
             "Content-Type": "application/json",
             "auth_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTc4MzQ0M2M5ZGE5ZTQxZTFkYmMzNiIsIm5hbWUiOiJwcml5YW5zaCIsImVtYWlsIjoiamVza2x2cGFzbmhAZ2FtaWwuY29tIiwiaWF0IjoxNzA5NjcxMjM2fQ.4SpERJuaLyHs7rBOjpAVcrDUZhRstE1EmweYcT__Xn4"
           },
-         
+          
           body: JSON.stringify({title,description,tag}), 
         });
-        const json = response.json()
-      
-        for (let index = 0; index < notes.length; index++) {
-          const element = notes[index];
+        const json = await response.json()
+      let newNote = JSON.parse(JSON.stringify(notes));
+        for (let index = 0; index < newNote.length; index++) {
+          const element = newNote[index];
           if(element._id===id){
-            notes[index].title=title;
-            notes[index].description=description;
-            notes[index].tag=tag;
+            newNote[index].title=title;
+            newNote[index].description=description;
+            newNote[index].tag=tag;
+            break;
           }
-          
         }
+        setNotes(newNote);
          
       }
 
