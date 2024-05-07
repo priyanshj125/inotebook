@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import Notes from "./Notes.js";
 
-const Home = () => {
+const Home = (props) => {
 
   return (
     <div>
@@ -9,7 +9,7 @@ const Home = () => {
 
 
 
-      <Notes />
+      <Notes showalert={props.showalert} />
     </div>
   )
 

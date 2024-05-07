@@ -1,7 +1,11 @@
 import React, { useState } from 'react'
 
+import { json } from 'react-router-dom';
+import { useNavigate} from'react-router-dom';
+
 
 const Login = (props) => {
+  let history = useNavigate();
   const Host= "http://localhost:5000"
   const [cradensital,setcradensital] = useState({email:"",password:"",});
     // const [password,setpassword] = useState("");
@@ -20,6 +24,16 @@ const Login = (props) => {
       
       const json = await response.json();
         console.log(json);
+        if (json.success) {
+          localStorage.setItem('token',json.authtoken);
+          history("/");
+      props.showalert("successfuly login","success")
+          
+
+        }
+        else {
+          props.showalert("invalid credenstials","danger")
+        }
       }
       const onChange = (e) => {
         setcradensital({...cradensital,[e.target.name]: e.target.value });

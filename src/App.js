@@ -8,9 +8,22 @@ import NoteContext from './context/notes/notecontext.js';
 import Login from './components/login.js';
 import Signup from './components/signup.js';
 import NoteState from './context/notes/notestate.js';
+import Alert from './components/alert.js';
+import  {useState}  from 'react';
+
  
 
 function App() {
+  const [alert, setAlert] = useState(null);
+  const showalert=(message,types)=>{
+    setAlert({
+      msg:message,
+      types:types
+    })
+    //  setTimeout(() => {
+    //   setAlert(null)
+    // }, 1500);
+  }
   return (
     <>
     <NoteState>
@@ -18,15 +31,16 @@ function App() {
 
     <Router>
     <Navbar/> 
+    <Alert alert={alert} />
     <div className="container">
 
 
     <Routes>
 
     <Route exact path="/About" element={<About/>}/>
-    <Route exact path="/Home" element={<Home/>}/>
-    <Route exact path="/Login" element={<Login/>}/>
-    <Route exact path="/Signup" element={<Signup/>}/>
+    <Route exact path="/Home" element={<Home showalert={showalert}/>}/>
+    <Route exact path="/Login" element={<Login  showalert={showalert} />}/>
+    <Route exact path="/Signup" element={<Signup  showalert={showalert}  />}/>
 
 
     </Routes>

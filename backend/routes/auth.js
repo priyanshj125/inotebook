@@ -12,19 +12,21 @@ router.post('/createuser', [
     body('email').isEmail().withMessage('Email is not valid'),
     body('password').isLength({ min: 6 }).withMessage('Password must be at least 6 characters long')
 ], async (req, res) => {
+    let success=false
+
 
     // const user = await User(req.body);
     // user.save();
 
     const error = validationResult(req);
     if (!error.isEmpty()) {
-        return res.status(400).json({ error: error.array() });
+        return res.status(400).json({ success,error: error.array() });
     }
 
     try {
         let users = await User.findOne({ email: req.body.email })
         if (users) {
-            return res.status(400).json({ error: 'email already exists' })
+            return res.status(400).json({ success,error: 'email already exists' })
         }
 
         //create a new user->
@@ -41,7 +43,8 @@ router.post('/createuser', [
             email: user.email
         }
         const authtoken = jwt.sign(data, JWT_SECRET);
-        res.json({token:authtoken});
+        success=true
+        res.json({success,token:authtoken});
         // res.json(user)
     } catch (e) {                                     //catch the error
         console.error(e.message);
@@ -54,6 +57,7 @@ router.post('/login', [
     body('email').isEmail().withMessage('Email is not valid'),
     body('password').exists().withMessage('Password cannot be blank')
 ], async (req, res) => {
+    let success=false
     const error = validationResult(req);
     if (!error.isEmpty()) {
         return res.status(400).json({ error: errors.array() })
@@ -62,21 +66,22 @@ router.post('/login', [
     try {
         let user =await User.findOne({ email: email })
         if (!user) {
-            return res.status(400).json({ error: 'email not found' })
+            return res.status(400).json({ success,error: 'email not found' })
         }
         const passwordCompare = await bcrypt.compare(password, user.password)
         if (!passwordCompare) {
-            return res.status(400).json({ error: 'password not match' })
+            return res.status(400).json({success, error: 'password not match' })
         }
         const data = {
-            user: {
+            user: { 
                 id: user._id
 
             }
 
         }
         const authtoken = jwt.sign(data, JWT_SECRET)
-        res.json(authtoken)
+        success=true
+        res.json({success,authtoken})
 
     } catch (e) {                                     //catch the error
         console.error(e.message);
