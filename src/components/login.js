@@ -8,9 +8,7 @@ const Login = (props) => {
     const handlesumit = async(e) => {
       e.preventDefault();
       // props.login(e.target.email.value,e.target.password.value)
-      
-      
-      
+    
       const response = await fetch(`${Host}/api/auth/login`, {
         method: "POST",  
         headers: {
