@@ -15,7 +15,7 @@ const Notes = () => {
         fetchalldata();
       }
       else {
-        history.push("/");
+        history.push("/login");
       }
 
     },[])
@@ -44,7 +44,7 @@ const Notes = () => {
     
       <Addnotes />
   
-     <button type="button" ref={ref}  class="btn btn-primary d-none " data-bs-toggle="modal" data-bs-target="#exampleModal">
+     <button type="button" ref={ref}  className="btn btn-primary d-none " data-bs-toggle="modal" data-bs-target="#exampleModal">
   Launch demo modal
 </button>
 

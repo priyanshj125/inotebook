@@ -8,7 +8,8 @@ const NoteState=(props)=>{
     const notesintial=[];
     //get all notesf
     const [notes,setNotes]=useState(notesintial);
-    //add notes
+    //add notesgit branch main
+
 
     const fetchalldata = async()=>{
       const response = await fetch(`${Host}/api/notes/fetch`, {
@@ -21,6 +22,7 @@ const NoteState=(props)=>{
       });
       console.log("fetch all data successfully");
       const json = await response.json();
+      console.log(json);
       setNotes(notes.concat(json));
     }
 

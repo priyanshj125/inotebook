@@ -38,8 +38,8 @@ const Navbar = () => {
                                 <Link className="nav-link disabled" aria-disabled="true">Disabled</Link>
                             </li>
                         </ul>
-                        <Link role="button" class="btn btn-primary mx-2" to="/Login">log-in</Link>
-                        <Link role="button" class="btn btn-light mx-2" to="/Signup">sign-up</Link>
+                        <Link role="button" className="btn btn-primary mx-2" to="/Login">log-in</Link>
+                        <Link role="button" className="btn btn-light mx-2" to="/Signup">sign-up</Link>
                     
                     </div>
                 </div>
