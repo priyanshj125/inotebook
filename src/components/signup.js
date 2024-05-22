@@ -41,27 +41,27 @@ const Signup = (props) => {
         <form onSubmit={handlesumit}>
 
         <div className="mb-3">
-    <label htmlFor="name" className="form-label">name</label>
+    <label htmlFor="name" className="form-label text_u">name</label>
     <input type="text" className="form-control" name='name' value={cradensital.name} onChange={onChange} id="name" />
     <div id="nameHelp" className="form-text">USERNAME</div>
   </div>  
     
   <div className="mb-3">
-    <label htmlFor=" " className="form-label">Email address</label>
+    <label htmlFor=" " className="form-label text_u">Email address</label>
     <input type="email" className="form-control" onChange={onChange} value={cradensital.email} name='email' id="email1" aria-describedby="emailHelp"/>
-    <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+    {/* <div id="emailHelp" className="form-text text_u">We'll never share your email with anyone else.</div> */}
   </div>
 
   <div className="mb-3">
-    <label htmlFor="" className="form-label">Password</label>
+    <label htmlFor="" className="form-label text_u">Password</label>
     <input type="password" className="form-control" name='password' value={cradensital.password} onChange={onChange}id="Password"/>
   </div>
   <div className="mb-3">
-    <label htmlFor="exampleInputPassword1"  className="form-label">conform Password</label>
+    <label htmlFor="exampleInputPassword1"  className="form-label text_u">conform Password</label>
     <input type="text" className="form-control" name='cpassword' value={cradensital.cpassword} onChange={onChange} id="cPassword"/>
   </div>
  
-  <button type="submit" className="btn btn-primary">Sign-up</button>
+  <button type="submit" className="btn btn-primary text_u">Sign-up</button>
 </form>
       
     </div>

@@ -7,7 +7,7 @@ import { useNavigate} from'react-router-dom';
 
 const Notes = () => {
     const context = useContext(noteContext);
-  let history = useNavigate();
+  let navigate = useNavigate();
     
     const { notes,fetchalldata,editNotes} = context;
     useEffect(()=>{
@@ -15,7 +15,8 @@ const Notes = () => {
         fetchalldata();
       }
       else {
-        history.push("/login");
+        navigate("/login");
+        
       }
 
     },[])
@@ -40,7 +41,7 @@ const Notes = () => {
   
     }
   return (
-    <>
+    <div className="text_u">
     
       <Addnotes />
   
@@ -61,20 +62,20 @@ const Notes = () => {
         <form>
           <div className="mb-3">
             <label htmlFor="title" className="form-label">
-              title
+              TITLE
             </label>
             <input type="text"className="eform-control"id="etitle" name="etitle"  aria-describedby="emailHelp" value={note.etitle} onChange={onchange} />
        
           </div>
           <div className="mb-3">
             <label htmlFor="description" className="form-label"> 
-            description
+             DESCRIPTION 
             </label>
             <input type="text"className="form-control"    id="edescription" name="edescription" value={note.edescription} onChange={onchange}/>
           </div>  
            <div className="mb-3">
             <label htmlFor="edescription" className="form-label">
-            tag
+           TAG 
             </label>
             <input type="text"className="form-control"    id="etag" name="etag" value={note.etag} onChange={onchange}/>
           </div>
@@ -120,7 +121,7 @@ const Notes = () => {
         </div>
       
     </div>
-        </>
+        </div>
   )
 }
 

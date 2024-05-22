@@ -6,7 +6,7 @@ const { body, validationResult } = require('express-validator');
 // try {
 router.get('/fetch', fetchuser, async (req, res) => {
   try {
-    const notes = await Note.find({ user: id });
+    const notes = await Note.find({ user: req.user.id });
     res.json(notes);
   } catch (error) {
     res.status(400).send({ error: "servies problem part 3 dume 401" })
@@ -16,7 +16,7 @@ router.get('/fetch', fetchuser, async (req, res) => {
 // route 2 which use to add the notes
 router.post('/addnotes', fetchuser, [
   body('title').not().isEmpty().withMessage('Title is required'),
-  body('description').not().isEmpty().withMessage('description is required').isLength({ min: 5 }),
+  body('description').not().isEmpty().withMessage('description is required').isLength({ min: 2 }),
 
 ], async (req, res) => {
 
@@ -26,7 +26,7 @@ router.post('/addnotes', fetchuser, [
     if (!error.isEmpty()) {
       return res.status(410).json({ error: error.array() });
     }
-    const notes = new Note({ title, description, user: id, tag });
+    const notes = new Note({ title, description, user: req.user.id, tag });
     const notessave = await notes.save()
     res.json(notes);
   } catch (error) {
@@ -48,7 +48,7 @@ router.put('/updatenote/:id', fetchuser, async (req, res) => {
     if (!note) { return res.status(404).send("Not Found") }
 
     if (note.user.toString() !== id) {
-      console.log("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
+      // console.log("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
       return res.status(401).send("Not Allowed");
     }
     note = await Note.findByIdAndUpdate(req.params.id, { $set: newNote }, { new: false })

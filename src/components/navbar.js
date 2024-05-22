@@ -1,17 +1,46 @@
 import React, {useEffect} from 'react'
 import {Link, useLocation} from 'react-router-dom'
+import { useState } from "react";
+
 
 
 const Navbar = () => {
-    let location = useLocation();
+const [islogin,setislogin]=useState(false);
+ 
+
+const token = localStorage.getItem('token');
+useEffect(() => {
+    const token = localStorage.getItem('token');
+    setislogin(!!token);
+}, []);
+
+
+
+
+// if (token) {
+//     setislogin(true);
+// }else{
+//     setislogin(false);
+// }
+
+
+
+let location = useLocation();
+const handlelogout=()=>{
+    localStorage.removeItem("token");
+    setislogin(false)
+    window.location.reload();
+}
+console.log(islogin);
+    // const islogin=[]
     useEffect(() => {
-       console.log(location.pathname);
+       console.log(location.pathname); <Link role="button" className="btn btn-danger mx-2" to="/">log out</Link>
       },[location]);
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark" >
                 <div className="container-fluid">
-                    <Link className="navbar-brand" to="/">inotebook</Link>
+                    <Link className="navbar-brand" to="/home">Inotebook</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -38,9 +67,12 @@ const Navbar = () => {
                                 <Link className="nav-link disabled" aria-disabled="true">Disabled</Link>
                             </li>
                         </ul>
+                      
                         <Link role="button" className="btn btn-primary mx-2" to="/Login">log-in</Link>
                         <Link role="button" className="btn btn-light mx-2" to="/Signup">sign-up</Link>
-                    
+                        <button role='button' className={`btn btn-danger disable mx-2 ${islogin==false?'disabled':''}`} onClick={handlelogout}>logout</button>
+                        
+                       
                     </div>
                 </div>
             </nav>

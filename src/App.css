@@ -1,5 +1,17 @@
+
+
+ html,body,#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+
+
 .App {
   text-align: center;
+  text-decoration-color: #0e6881;
 }
 
 .App-logo {
@@ -44,13 +56,13 @@
   background: linear-gradient(-45deg, rgb(0, 153, 255) 0%, cyan 100%);
   overflow: hidden;
   border: 1px solid black;
-  box-shadow: rgba(141, 177, 205, 0.618) 0px 40px 30px -25px;
+  box-shadow: rgba(49, 109, 155, 0.618) 0px 40px 30px -25px;
   transition: all 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
 
 .card:hover {
   transform: scale(1.08);
-  box-shadow: rgba(141, 177, 205, 0.618) 0px 30px 30px -25px;
+  box-shadow: rgba(29, 80, 119, 0.618) 0px 30px 30px -25px;
 }
 
 .icons-container {
@@ -107,7 +119,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  box-shadow: rgba(66, 66, 66, 0.349) 5px 0px 10px 0px inset;
+  box-shadow: rgba(100, 23, 23, 0.349) 5px 0px 10px 0px inset;
   transition: all 0.5s ease-in-out;
   display: grid;
   place-content: center;
@@ -131,7 +143,7 @@
 }
 
 .box .content .box-text {
-  color: rgba(255, 255, 255, 0.738);
+  color: rgba(142, 13, 13, 0.738);
   font-size: 0.8rem;
 }
 
@@ -140,7 +152,7 @@
   top: 0;
   border-radius: 0;
   border: 1px solid transparent;
-  box-shadow: rgba(66, 66, 66, 0) 5px 0px 10px 0px inset;
+  box-shadow: rgba(121, 19, 19, 0) 5px 0px 10px 0px inset;
 }
 
 .box:hover .content {
@@ -151,21 +163,21 @@
 .box1 {
   top: -85%;
   right: -40%;
-  background: rgb(255, 112, 60);
+  background: rgb(67, 11, 119);
   border-radius: 200px;
 }
 
 .box2 {
   top: -70%;
   right: -45%;
-  background: rgb(255, 174, 0);
+  background: rgb(139, 98, 10);
   border-radius: 200px;
 }
 
 .box3 {
   top: -62%;
   right: -30%;
-  background: rgb(255, 194, 52);
+  background: rgb(124, 90, 10);
   border-radius: 200px;
 }
 .background{
@@ -175,6 +187,51 @@
   width: 100%;
   height: 100%;
   background: rgba(88, 52, 52, 0.5);
+  
+  
   z-index: -1;
 }
+.gradient-background {
+  background: linear-gradient(to right, #341362, #5c3415);
+}
 
+.text_u{
+  color: rgb(181, 194, 194);
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+.modal-footer{
+  background-color: rgb(8, 124, 124);
+
+}
+.footer {
+  width: 100%;
+  
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+  position: relative;
+  bottom: 0;
+  left: 0;
+}
+.about_h{
+  height: 00%;
+}
+.app-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.app-contanier{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+#root {
+  flex: 1;
+}

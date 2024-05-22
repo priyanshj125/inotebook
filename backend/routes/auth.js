@@ -5,8 +5,11 @@ const router = express.Router()
 const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
-const JWT_SECRET = ('priyanshlovejesikanomore')
+const JWT_SECRET = ('priyansh123')
 var fetchuser=require('../middleware/fetchuser')
+
+
+
 router.post('/createuser', [
     body('name').not().isEmpty().withMessage('Name is required'),
     body('email').isEmail().withMessage('Email is not valid'),
@@ -93,7 +96,7 @@ router.post('/login', [
 
 router.post('/getuser', fetchuser, async (req, res) => {
     try {
-        console.log("this is ru");
+        // console.log("this is ru");
         const userId = id// Ensure to use const keyword for defining userId
         const user = await User.findById(userId).select("-password");
         res.send(user);

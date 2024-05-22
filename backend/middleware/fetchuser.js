@@ -1,8 +1,6 @@
 var jwt = require('jsonwebtoken');
 
-const JWT_SECRET = 'priyanshlovejesikanomore';
-
-
+const JWT_SECRET = 'priyansh123';
 
 const fetchuser = (req,res,next)=>{
 
@@ -16,10 +14,10 @@ try {
     const data =jwt.verify(token,JWT_SECRET);
     id=data.id;
     // res.send(id)
-    // req.user=data.user;
+    req.user=data.user;
      next();
 } catch (error) {
-    res.status(401).send({error:"servies problem dume 401"})
+    res.status(401).send({error:"servies problem dume 401 hello"})
     console.log(error)
 }
 

@@ -41,14 +41,14 @@ const Login = (props) => {
   <form onSubmit={handlesumit}>
   <div className="mb-3">
 
-                    <label htmlFor="email" className="form-label">Email address</label>
+                    <label htmlFor="email" className="form-label text_u">Email address</label>
 
-                    <input type="email" className="form-control" value={cradensital.email} onChange={onChange} id="email" name="email" aria-describedby="emailHelp" />
+                    <input type="email" className="form-control text_u" value={cradensital.email} onChange={onChange} id="email" name="email" aria-describedby="emailHelp" />
 
-                    <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+                    {/* <div id="emailHelp" className="form-text text_u">We'll never share your email with anyone else.</div> */}
   </div>
   <div className="mb-3">
-    <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
+    <label htmlFor="exampleInputPassword1" className="form-label text_u">Password</label>
     <input type="password" className="form-control" value={cradensital.password} onChange ={onChange} name='password'  id="exampleInputPassword1"/>
   </div>
 

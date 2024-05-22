@@ -1,17 +1,19 @@
+const mongoose= require('mongoose');
 
-const mongoose = require('mongoose');
-const { MongoClient } = require('mongodb');
-const uri = 'mongodb://localhost:27017/inotebook?readPreference=primary&directConnection=true';
-const connectToMongo = async () => {
-  try { 
-    await mongoose.connect(uri,{
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    console.log('Connected to MongoDB');
-  } catch (error) {
-    console.error('Error connecting to MongoDB:',error.message);
-    process.exit(1);
-  }
+const connectDb =async()=>{
+    if (mongoose.connection.readystate >=1) return;
+
+    try {
+        await mongoose.connect(`mongodb+srv://priyanshjain8491:aPvoRd73cDd5WgGw@inotebook.3gzpd1q.mongodb.net/`,{
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    }) ;
+    console.log("mongodb atlas connected......");
+        
+    } catch (error) {
+        console.error(error.message);
+        process.exit(1);
+    }
 };
-module.exports = connectToMongo;
+module.exports=connectDb;
+

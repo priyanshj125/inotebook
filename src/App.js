@@ -25,7 +25,7 @@ function App() {
     // }, 1500);
   }
   return (
-    <>
+    <div className="gradient-background">
     <NoteState>
 
 
@@ -51,7 +51,7 @@ function App() {
 
 
     </NoteState>
-    </>
+    </div>
   );
 }
 
