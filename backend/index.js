@@ -11,7 +11,11 @@ connectDb();
 const User = require('./modules/User.js')
 const Notes = require('./modules/Notes.js')
 
-app.use(cors())
+app.use(cors(
+ { origin:{},
+  methods:["POST","GET"],
+  Credentials:true}
+))
 app.use(express.json())
 app.use('/api/auth',require('./routes/auth'))
 // app.use('routes/notes',require('./routes/notes'))
