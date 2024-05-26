@@ -10,7 +10,7 @@ const token=req.header('auth_token');
 if(!token){
     res.status(401).send({error:"invalid token please enter the right one"})
 }
-try {
+try { 
     const data =jwt.verify(token,JWT_SECRET);
     id=data.id;
     // res.send(id)
