@@ -4,7 +4,7 @@ import { json } from 'react-router-dom';
 import { useNavigate} from'react-router-dom';
 
 const Signup = (props) => {
-  const Host= "http://localhost:5000"
+  const Host= "https://inotebook-2ev.onrender.com"
   let history = useNavigate();
 
   const onChange = (e) => {
