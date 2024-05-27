@@ -4,7 +4,7 @@ import NoteContext from "./notecontext";
 import { useState } from "react";
 
 const NoteState=(props)=>{
-  const Host= "http://localhost:5000"
+  const Host= "https://inotebook-2ev.onrender.com"
     const notesintial=[];
     //get all notesf
     const [notes,setNotes]=useState(notesintial);
@@ -12,7 +12,7 @@ const NoteState=(props)=>{
 
 
     const fetchalldata = async()=>{
-      const response = await fetch(`${Host}/api/notes/fetch`, {
+      const response = await fetch(`https://inotebook-2ev.onrender.com/api/notes/fetch`, {
         method: "GET",  
         headers: {
           "Content-Type": "application/json",
@@ -31,7 +31,7 @@ const NoteState=(props)=>{
 
       const addNotes = async(title,description,tag)=>{
         try {
-          const response = await fetch (`${Host}/api/notes/addnotes`,{
+          const response = await fetch (`https://inotebook-2ev.onrender.com/api/notes/addnotes`,{
             method: 'POST',  
             headers: {
               "Content-Type": "application/json",
@@ -66,7 +66,7 @@ const NoteState=(props)=>{
 
       const deleteNotes = async (id)=>{
         console.log("this is delete notes");
-        const response = await fetch(`${Host}/api/notes/deletenote/${id}`, {
+        const response = await fetch(`https://inotebook-2ev.onrender.com/api/notes/deletenote/${id}`, {
           method: "DELETE",  
           headers: {
             "Content-Type": "application/json",
@@ -86,7 +86,7 @@ const NoteState=(props)=>{
       //edit notes
 
       const editNotes = async(id,title,description,tag)=>{
-        const response = await fetch(`${Host}/api/notes/updatenote/${id}`, {
+        const response = await fetch(`https://inotebook-2ev.onrender.com/api/notes/updatenote/${id}`, {
           method: "PUT",  
           headers: {
             "Content-Type": "application/json",
