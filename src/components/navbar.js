@@ -6,6 +6,7 @@ import { useState } from "react";
 
 const Navbar = () => {
 const [islogin,setislogin]=useState(false);
+const [searchInput,setsearchInput]=useState("");
  
 
 const token = localStorage.getItem('token');
@@ -57,15 +58,16 @@ console.log(islogin);
                                     Dropdown
                                 </Link>
                                 <ul className="dropdown-menu">
-                                    <li><Link className="dropdown-item" to="/">Action</Link></li>
-                                    <li><Link className="dropdown-item" to="/">Another action</Link></li>
-                                    <li><hr className="dropdown-divider"/></li>
-                                    <li><Link className="dropdown-item" to="/">Something else here</Link></li>
+                                    <li><Link className="dropdown-item" to="/home">Action</Link></li>
+                                   
                                 </ul>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link disabled" aria-disabled="true">Disabled</Link>
                             </li>
+                        <form class="form-inline my-2 my-lg-0">
+                       <input class="form-control mr-sm-2" type="search" placeholder="Search" value={searchInput} onChange={(e)=>setsearchInput(e.target.value)} aria-label="Search"/>
+                       </form>
+                       {/* <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> */}
                         </ul>
                       
                         <Link role="button" className="btn btn-primary mx-2" to="/Login">log-in</Link>

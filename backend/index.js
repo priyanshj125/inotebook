@@ -13,7 +13,7 @@ const Notes = require('./modules/Notes.js')
 
 app.use(cors(
  { origin:{},
-  methods:["POST","GET","DELETE"],
+  methods:["POST","GET","DELETE","PUT"],
   Credentials:true}
 ))
 app.use(express.json())
