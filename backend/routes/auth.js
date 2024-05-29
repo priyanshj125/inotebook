@@ -7,10 +7,10 @@ const bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
 const JWT_SECRET = ('priyansh123')
 var fetchuser=require('../middleware/fetchuser')
-import LoadingBar from 'react-top-loading-bar'
+// import LoadingBar from 'react-top-loading-bar'
 
 
-const [progress, setProgress] = useState(10); 
+// const [progress, setProgress] = useState(10); 
 
 
 router.post('/createuser', [
@@ -38,7 +38,7 @@ router.post('/createuser', [
         //create a new user->
         const salt = await bcrypt.genSalt(10);
         const secPass = await bcrypt.hash(req.body.password, salt);
-        user = await User.create({
+        const user = await User.create({
             name: req.body.name,
             password: secPass,
             email: req.body.email,
@@ -59,16 +59,16 @@ router.post('/createuser', [
 })
 
 //autheintecagtoin user post/api/auth/login
-setProgress(10)
+// setProgress(10)
 router.post('/login', [
     body('email').isEmail().withMessage('Email is not valid'),
     body('password').exists().withMessage('Password cannot be blank')
 ], async (req, res) => {
     let success=false
 
-    props.setProgress(20)
+    // props.setProgress(20)
     const error = validationResult(req);
-setProgress(30)
+// setProgress(30)
     if (!error.isEmpty()) {
         return res.status(400).json({ error: errors.array() })
     }
@@ -78,7 +78,7 @@ setProgress(30)
         if (!user) {
             return res.status(400).json({ success,error: 'email not found' })
         }
-        setProgress(50)
+        // setProgress(50)
         const passwordCompare = await bcrypt.compare(password, user.password)
         if (!passwordCompare) {
             return res.status(400).json({success, error: 'password not match' })

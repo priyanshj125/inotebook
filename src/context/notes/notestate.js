@@ -4,16 +4,15 @@ import NoteContext from "./notecontext";
 import { useState } from "react";
 
 const NoteState=(props)=>{
-
-  const Host= "https://inotebook-2ev.onrender.com"
+  const Host= "http://localhost:5000"
     const notesintial=[];
     //get all notesf
     const [notes,setNotes]=useState(notesintial);
     //add notesgit branch main
-console.log(props.searchtag+"from notestate");
+
 
     const fetchalldata = async()=>{
-      const response = await fetch(`https://inotebook-2ev.onrender.com/api/notes/fetch`, {
+      const response = await fetch(`${Host}/api/notes/fetch`, {
         method: "GET",  
         headers: {
           "Content-Type": "application/json",
@@ -24,15 +23,7 @@ console.log(props.searchtag+"from notestate");
       console.log("fetch all data successfully");
       const json = await response.json();
       console.log(json);
-
-      const filteredNotes = props.searchTag 
-      ? json.filter(note =>
-          note.tag && note.tag.toLowerCase().includes(props.searchTag.toLowerCase())
-        )
-      : json;
-      
-      setNotes(notes.concat(filteredNotes));
-      // setNotes(notes.concat(json));
+      setNotes(notes.concat(json));
     }
 
       // const [notes,setNotes]=useState(notesintial);
@@ -40,7 +31,7 @@ console.log(props.searchtag+"from notestate");
 
       const addNotes = async(title,description,tag)=>{
         try {
-          const response = await fetch (`https://inotebook-2ev.onrender.com/api/notes/addnotes`,{
+          const response = await fetch (`${Host}/api/notes/addnotes`,{
             method: 'POST',  
             headers: {
               "Content-Type": "application/json",
@@ -75,7 +66,7 @@ console.log(props.searchtag+"from notestate");
 
       const deleteNotes = async (id)=>{
         console.log("this is delete notes");
-        const response = await fetch(`https://inotebook-2ev.onrender.com/api/notes/deletenote/${id}`, {
+        const response = await fetch(`${Host}/api/notes/deletenote/${id}`, {
           method: "DELETE",  
           headers: {
             "Content-Type": "application/json",
@@ -95,7 +86,7 @@ console.log(props.searchtag+"from notestate");
       //edit notes
 
       const editNotes = async(id,title,description,tag)=>{
-        const response = await fetch(`https://inotebook-2ev.onrender.com/api/notes/updatenote/${id}`, {
+        const response = await fetch(`${Host}/api/notes/updatenote/${id}`, {
           method: "PUT",  
           headers: {
             "Content-Type": "application/json",

@@ -51,7 +51,7 @@ const [progress, setProgress] = useState(0);
     <Route exact path="/About" element={<About/>}/>
     <Route exact path="/Home" element={<Home showalert={showalert}/>}/>
     <Route exact path="/Login" element={<Login  showalert={showalert} setProgress={setProgress}/>}/>
-    <Route exact path="/Signup" element={<Signup  showalert={showalert}  />}/>
+    <Route exact path="/Signup" element={<Signup  showalert={showalert} setProgress={setProgress}  />}/>
 
 
     </Routes>

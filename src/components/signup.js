@@ -4,7 +4,7 @@ import { json } from 'react-router-dom';
 import { useNavigate} from'react-router-dom';
 
 const Signup = (props) => {
-  const Host= "https://inotebook-2ev.onrender.com"
+  const Host= "http://localhost:5000"
   let history = useNavigate();
 
   const onChange = (e) => {
@@ -15,7 +15,8 @@ const Signup = (props) => {
     e.preventDefault();
     // props.login(e.target.email.value,e.target.password.value)
   
-    const response = await fetch(`${Host}/api/auth/createuser`, {
+    // const response = await fetch(`${Host}/api/auth/createuser`, {
+      const response = await fetch(`http://localhost:5000/api/auth/createuser`, {
       method: "POST",  
       headers: {
         "Content-Type": "application/json",
@@ -26,7 +27,7 @@ const Signup = (props) => {
     console.log(json);
     if (json.success) {
       localStorage.setItem('token',json.authtoken);
-      history("/home");
+      history("/login");
       props.showalert("successfuly crerate account","success")
   }else{
     // alert(json.message) 
@@ -54,7 +55,7 @@ const Signup = (props) => {
 
   <div className="mb-3">
     <label htmlFor="" className="form-label text_u">Password</label>
-    <input type="password" className="form-control" name='password' value={cradensital.password} onChange={onChange}id="Password"/>
+    <input type="password" className="form-control" name='password'  value={cradensital.password} placeholder="6 letter must contain" onChange={onChange}id="Password"/>
   </div>
   <div className="mb-3">
     <label htmlFor="exampleInputPassword1"  className="form-label text_u">conform Password</label>

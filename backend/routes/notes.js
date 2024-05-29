@@ -9,7 +9,7 @@ router.get('/fetch', fetchuser, async (req, res) => {
     const { tag } = req.query;
     let notes;
     if(tag){
-       notes = await Note.find({ user: req.user.id, tag: { $regex: tag, $options: 'i' } });
+       notes = await Note.find({ user: req.user.id});
     }else{
      notes = await Note.find({ user: req.user.id  });
   }
