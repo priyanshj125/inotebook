@@ -9,6 +9,7 @@ const Login = (props) => {
     // const [password,setpassword] = useState("");
     const handlesumit = async(e) => {
       e.preventDefault();
+      props.setProgress(10)
       // props.login(e.target.email.value,e.target.password.value)
       const response = await fetch(`${Host}/api/auth/login`, {
         method: "POST",  
@@ -17,12 +18,16 @@ const Login = (props) => {
         },
         body: JSON.stringify({email:cradensital.email,password:cradensital.password}), 
       });
+      props.setProgress(50)
+
       
       const json = await response.json();
         console.log(json);
         if (json.success) {
           localStorage.setItem('token',json.authtoken);
-          history("/");
+          history("/home");
+          props.setProgress(100)
+
       props.showalert("successfuly login","success")
         }
         else {

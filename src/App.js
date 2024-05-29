@@ -10,11 +10,16 @@ import Signup from './components/signup.js';
 import NoteState from './context/notes/notestate.js';
 import Alert from './components/alert.js';
 import  {useState}  from 'react';
+import LoadingBar from 'react-top-loading-bar'
+
 
  
 
 function App() {
   const [alert, setAlert] = useState(null);
+const [searchTag, setSearchTag] = useState("");
+const [progress, setProgress] = useState(0); 
+  
   const showalert=(message,types)=>{
     setAlert({
       msg:message,
@@ -25,21 +30,27 @@ function App() {
     // }, 1500);
   }
   return (
+ 
+  
     <div className="gradient-background">
+      <NoteContext.Provider>
+
+
     <NoteState>
 
 
     <Router>
-    <Navbar/> 
+    <Navbar searchTag={searchTag} setSearchTag={setSearchTag} /> 
+    <LoadingBar color='#f11919' progress={progress} onLoaderFinished={() => setProgress(0)} />
     <Alert alert={alert} />
     <div className="container">
-
+<NoteState progress={progress} setProgress={setProgress}/>
 
     <Routes>
 
     <Route exact path="/About" element={<About/>}/>
     <Route exact path="/Home" element={<Home showalert={showalert}/>}/>
-    <Route exact path="/Login" element={<Login  showalert={showalert} />}/>
+    <Route exact path="/Login" element={<Login  showalert={showalert} setProgress={setProgress}/>}/>
     <Route exact path="/Signup" element={<Signup  showalert={showalert}  />}/>
 
 
@@ -51,6 +62,7 @@ function App() {
 
 
     </NoteState>
+      </NoteContext.Provider>
     </div>
   );
 }

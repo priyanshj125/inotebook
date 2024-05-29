@@ -6,7 +6,13 @@ const { body, validationResult } = require('express-validator');
 // try {
 router.get('/fetch', fetchuser, async (req, res) => {
   try {
-    const notes = await Note.find({ user: req.user.id });
+    const { tag } = req.query;
+    let notes;
+    if(tag){
+       notes = await Note.find({ user: req.user.id, tag: { $regex: tag, $options: 'i' } });
+    }else{
+     notes = await Note.find({ user: req.user.id  });
+  }
     res.json(notes);
   } catch (error) {
     res.status(400).send({ error: "servies problem part 3 dume 401" })

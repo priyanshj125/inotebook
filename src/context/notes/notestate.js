@@ -4,12 +4,13 @@ import NoteContext from "./notecontext";
 import { useState } from "react";
 
 const NoteState=(props)=>{
+
   const Host= "https://inotebook-2ev.onrender.com"
     const notesintial=[];
     //get all notesf
     const [notes,setNotes]=useState(notesintial);
     //add notesgit branch main
-
+console.log(props.searchtag+"from notestate");
 
     const fetchalldata = async()=>{
       const response = await fetch(`https://inotebook-2ev.onrender.com/api/notes/fetch`, {
@@ -23,7 +24,15 @@ const NoteState=(props)=>{
       console.log("fetch all data successfully");
       const json = await response.json();
       console.log(json);
-      setNotes(notes.concat(json));
+
+      const filteredNotes = props.searchTag 
+      ? json.filter(note =>
+          note.tag && note.tag.toLowerCase().includes(props.searchTag.toLowerCase())
+        )
+      : json;
+      
+      setNotes(notes.concat(filteredNotes));
+      // setNotes(notes.concat(json));
     }
 
       // const [notes,setNotes]=useState(notesintial);
