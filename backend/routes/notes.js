@@ -51,9 +51,12 @@ router.put('/updatenote/:id', fetchuser, async (req, res) => {
 
     // Find the note to be updated and update it
     let note = await Note.findById(req.params.id);
+    // console.log(req.params.id); 
+    // console.log(note.user);
     if (!note) { return res.status(404).send("Not Found") }
-
-    if (note.user.toString() !== id) {
+    console.log(note);
+ 
+    if (note.user.toString() !== req.user.id) {
       // console.log("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
       return res.status(401).send("Not Allowed");
     }
@@ -75,9 +78,12 @@ router.delete('/deletenote/:id', fetchuser, async (req, res) => {
     if (tag) { newNote.tag = tag };
 
     // Find the note to be updated and update it
-    let note = await Note.findById(req.params.id);
-    if (!note) { return res.status(404).send("Not Found") }
+    let note = await Note.findById(_id);
+    console.log(note.user);
 
+    console.log(id);
+    if (!note) { return res.status(404).send("Not Found") }
+    
     if (note.user.toString() !== id) {
       return res.status(401).send("Not Allowed");
     }

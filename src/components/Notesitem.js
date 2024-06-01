@@ -1,6 +1,5 @@
-import React from 'react'
+import React,{ useContext }  from 'react'
 import noteContext from "../context/notes/notecontext.js";
-import { useContext } from "react";
 
 
 

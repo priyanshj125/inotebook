@@ -17,7 +17,7 @@ import LoadingBar from 'react-top-loading-bar'
 
 function App() {
   const [alert, setAlert] = useState(null);
-const [searchTag, setSearchTag] = useState("");
+// const [searchTag, setSearchTag] = useState("12345");
 const [progress, setProgress] = useState(0); 
   
   const showalert=(message,types)=>{
@@ -40,16 +40,16 @@ const [progress, setProgress] = useState(0);
 
 
     <Router>
-    <Navbar searchTag={searchTag} setSearchTag={setSearchTag} /> 
+   <NoteState progress={progress}  setProgress={setProgress} />
+    <Navbar /> 
     <LoadingBar color='#f11919' progress={progress} onLoaderFinished={() => setProgress(0)} />
     <Alert alert={alert} />
     <div className="container">
-<NoteState progress={progress} setProgress={setProgress}/>
 
     <Routes>
 
     <Route exact path="/About" element={<About/>}/>
-    <Route exact path="/Home" element={<Home showalert={showalert}/>}/>
+    <Route exact path="/Home" element={<Home showalert={showalert} />}/>
     <Route exact path="/Login" element={<Login  showalert={showalert} setProgress={setProgress}/>}/>
     <Route exact path="/Signup" element={<Signup  showalert={showalert} setProgress={setProgress}  />}/>
 

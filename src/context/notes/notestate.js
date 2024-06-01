@@ -1,12 +1,16 @@
-import React from "react";
+import React,{ useState,useEffect } from "react";
 
 import NoteContext from "./notecontext";
-import { useState } from "react";
 
 const NoteState=(props)=>{
   const Host= "http://localhost:5000"
-    const notesintial=[];
-    //get all notesf
+  const notesintial=[];
+  //get all notesf
+  const [searchTag, setSearchTag] = useState("");
+  // const { searchTag, setSearchTag } = props;
+  const [filteredNotes, setFilteredNotes] = useState([]);
+
+  // console.log(props.searchTag+"notesatate");
     const [notes,setNotes]=useState(notesintial);
     //add notesgit branch main
 
@@ -20,12 +24,34 @@ const NoteState=(props)=>{
         },
       
       });
-      console.log("fetch all data successfully");
+      // console.log("fetch all data successfully");
       const json = await response.json();
-      console.log(json);
-      setNotes(notes.concat(json));
-    }
+      // filterAndSetNotes(json);
+       
+    //  const  filteredNotes = json.filter(
+    //     (notes) => notes.tag && notes.tag.includes(searchTag)
+    //   );
+    const notesArray =  Array.isArray(json) ? json : [json];
 
+  const notes = notesArray.filter(
+    (notes) => notes.tag && notes.tag.includes(searchTag)
+  );
+      console.log(searchTag+"vjhvlkjvhkbmvcljzzzzzzzzzzz");
+      console.log(notes);
+      
+      setNotes([...notes]);
+      // console.log(notes);
+      
+    }
+    // const filterAndSetNotes = (notesData) => {
+    //   let filteredNotes = notesData.filter(
+    //     (note) => note.tag && note.tag.includes(searchTag)
+    //   );
+    //   console.log(filteredNotes);
+    //   setNotes(filteredNotes);
+    //   // console.log(notes);
+    // };
+  
       // const [notes,setNotes]=useState(notesintial);
       //add notes
 
@@ -63,7 +89,7 @@ const NoteState=(props)=>{
       }
 
       //delete notes
-
+// console.log(props.check+"notestatezzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
       const deleteNotes = async (id)=>{
         console.log("this is delete notes");
         const response = await fetch(`${Host}/api/notes/deletenote/${id}`, {
@@ -72,11 +98,13 @@ const NoteState=(props)=>{
             "Content-Type": "application/json",
             "auth_token":localStorage.getItem('token')
           }
-         
+          
         });
         const json = response.json()
 
-        console.log("deleting note with id"+id);
+        console.log("deleting note with id "+id);
+      // console.log(notes.user.toString());
+
         const newnotes=notes.filter((notes)=>{
           return notes._id!==id
         }) 
@@ -110,14 +138,16 @@ const NoteState=(props)=>{
          
       }
 
+      useEffect(() => {
+        fetchalldata();
+      }, [searchTag]);
 
-
-
+   
 
     
     return(
  
-        <NoteContext.Provider   value={{notes,setNotes,editNotes,deleteNotes,addNotes,fetchalldata} } >
+        <NoteContext.Provider   value={{notes,setNotes,editNotes,deleteNotes,addNotes,fetchalldata,setSearchTag,searchTag} } >
            { props.children}
         </NoteContext.Provider>
     )

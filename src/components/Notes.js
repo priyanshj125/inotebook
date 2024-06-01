@@ -30,7 +30,7 @@ const Notes = () => {
       setnotes({id:currentnote._id,etitle: currentnote.title,edescription:currentnote.description,etag :currentnote.tag});
     } 
     const handlesumitonclick = (e) => {
-      editNotes(note.id,note.etitle,note.edescription,note.etag)
+      editNotes(note.id, note.etitle , note.edescription , note.etag)
       refclose.current.click()
       
 

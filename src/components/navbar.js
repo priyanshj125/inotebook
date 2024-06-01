@@ -1,17 +1,20 @@
 import React, {useEffect} from 'react'
 import {Link, useLocation} from 'react-router-dom'
 import { useState } from "react";
-// import { useContext } from "react";
-// import notecontext from '../context/notes/notecontext';
+import { Context } from 'express-validator/lib/context';
+import { useContext } from "react";
+import notecontext from '../context/notes/notecontext';
 
 
 
 
 const Navbar = (props) => {
 const [islogin,setislogin]=useState(false);
+
 // const [searchInput, setSearchInput] = useState("");
 
 //  console.log(props.searchTag);
+const {setSearchTag }= useContext(notecontext)
 
 const token = localStorage.getItem('token');
 useEffect(() => {
@@ -40,10 +43,12 @@ useEffect(() => {
 // }else{
 //     setislogin(false);
 // }
-const [searchTag, setSearchTag] = useState('');
+// const [searchTag, setSearchTag] = useState('defult');
+// console.log("defult"+props.searchTag);
 
 const handlechange = (Value)=>{
-    props.setSearchTag(Value);
+    setSearchTag(Value);
+    // console.log(props.searchTag+" navbar handle change")
 
 }
 
@@ -55,10 +60,11 @@ const handlelogout=()=>{
     window.location.reload();
 }
 
-console.log(islogin);
+// console.log(islogin);
     // const islogin=[]
     useEffect(() => {
-       console.log(location.pathname); <Link role="button" className="btn btn-danger mx-2" to="/">log out</Link>
+       console.log(location.pathname); 
+       <Link role="button" className="btn btn-danger mx-2" to="/">log out</Link>
       },[location]);
     return (
         <div>
@@ -71,7 +77,7 @@ console.log(islogin);
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <Link className={`nav-link ${location.pathname=="/Home"?"active":"" }`} aria-current="page" to="/Home">Home</Link>
+                                <Link className={`nav-link ${location.pathname=="/Home"?"active":"" }`} aria-current="page"  to="/Home">Home</Link>
                             </li>
                             <li className="nav-item">
                                 <Link className={`nav-link ${location.pathname=="/about"?"active":"" }`  }to="/about">About</Link>
@@ -88,9 +94,8 @@ console.log(islogin);
                             <li className="nav-item">
                             </li>
                         <form class="form-inline my-2 my-lg-0">
-                       <input class="form-control mr-sm-2" id='search-input' type="search" value={props.searchTag} onChange={(e)=>handlechange(e.target.value)} placeholder="Search" aria-label="Search"/>
+                       <input class="form-control mr-sm-2" id='search-input' type="search" value={props.searchTag} onChange={(e)=>handlechange(e.target.value)} placeholder="Search by TAG" aria-label="Search"/>
                        </form>
-                       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                         </ul>
                       
                         <Link role="button" className="btn btn-primary mx-2" to="/Login">log-in</Link>
