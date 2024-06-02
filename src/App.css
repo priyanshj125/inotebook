@@ -143,7 +143,7 @@
 }
 
 .box .content .box-text {
-  color: rgba(142, 13, 13, 0.738);
+  color: rgba(31, 228, 136, 0.738);
   font-size: 0.8rem;
 }
 
@@ -152,7 +152,7 @@
   top: 0;
   border-radius: 0;
   border: 1px solid transparent;
-  box-shadow: rgba(121, 19, 19, 0) 5px 0px 10px 0px inset;
+  box-shadow: rgba(150, 17, 17, 0) 5px 0px 10px 0px inset;
 }
 
 .box:hover .content {
@@ -163,8 +163,8 @@
 .box1 {
   top: -85%;
   right: -40%;
-  background: rgb(67, 11, 119);
-  border-radius: 200px;
+  background: rgb(30, 201, 169);
+  border-radius: 00px;
 }
 
 .box2 {
