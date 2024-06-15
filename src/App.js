@@ -11,6 +11,7 @@ import NoteState from './context/notes/notestate.js';
 import Alert from './components/alert.js';
 import  {useState}  from 'react';
 import LoadingBar from 'react-top-loading-bar'
+import Form from './components/form.js';
 
 
  
@@ -47,6 +48,7 @@ const [progress, setProgress] = useState(0);
     <div className="container">
 
     <Routes>
+    <Route path="/Action" element={<Form heading="ENTER THE TEXT TO ANALYZE" showalert={showalert}   />}/>
 
     <Route exact path="/About" element={<About/>}/>
     <Route exact path="/Home" element={<Home showalert={showalert} />}/>

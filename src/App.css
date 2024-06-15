@@ -235,3 +235,6 @@
 #root {
   flex: 1;
 }
+.white-text {
+  color: white;
+}

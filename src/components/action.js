@@ -1,13 +1,20 @@
-import React from 'react'
+import React, { useContext } from "react";
+import act from "./form.js";
+import { text } from "express";
 
-const action = () => {
+const Action = (props) => {
+
+  // console.log(props.searchTag+"home")
   return (
-    <div>
-        
       
+    <div className="white-text"  >
+
+
+
+      < Form />
     </div>
   )
-}
 
-export default action
+};
 
+export default Action;
