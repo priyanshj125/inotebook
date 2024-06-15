@@ -4,7 +4,7 @@ import { json } from 'react-router-dom';
 import { useNavigate} from'react-router-dom';
 
 const Signup = (props) => {
-  const Host= "http://localhost:5000"
+  const Host= "https://inote-ruja.onrender.com"
   let history = useNavigate();
 
   const onChange = (e) => {
@@ -16,18 +16,26 @@ const Signup = (props) => {
     // props.login(e.target.email.value,e.target.password.value)
   
     // const response = await fetch(`${Host}/api/auth/createuser`, {
-      const response = await fetch(`http://localhost:5000/api/auth/createuser`, {
+      const response = await fetch(`https://inote-ruja.onrender.com/api/auth/createuser`, {
       method: "POST",  
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({name:cradensital.name,email:cradensital.email,password:cradensital.password}), 
     });
+    props.setProgress(10)
+
     const json = await response.json();
+    props.setProgress(30)
+
     console.log(json);
     if (json.success) {
       localStorage.setItem('token',json.authtoken);
+      props.setProgress(60)
+
       history("/login");
+      props.setProgress(100)
+
       props.showalert("successfuly crerate account","success")
   }else{
     // alert(json.message) 

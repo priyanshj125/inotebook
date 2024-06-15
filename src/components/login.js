@@ -4,7 +4,7 @@ import { useNavigate} from'react-router-dom';
 const Login = (props) => {
 
   let history = useNavigate();
-  const Host= "http://localhost:5000"
+  const Host= "https://inote-ruja.onrender.com"
   const [cradensital,setcradensital] = useState({email:"",password:"",});
     // const [password,setpassword] = useState("");
     const handlesumit = async(e) => {
@@ -29,6 +29,9 @@ const Login = (props) => {
           props.setProgress(100)
 
       props.showalert("successfuly login","success")
+      setTimeout(() => {
+        window.location.reload();
+      }, 500);
         }
         else {
           props.showalert("invalid credenstials","danger")
