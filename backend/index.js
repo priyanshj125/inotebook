@@ -21,7 +21,7 @@ app.use('/api/auth',require('./routes/auth'))
 // app.use('routes/notes',require('./routes/notes'))
 app.use('/api/notes', require('./routes/notes'))
 app.get('/', (req, res) => {
-  res.send('Hello World 2222!')
+  res.send('backend server running at http://localhost:${port}')
 }) 
 app.listen(port, () => {
   console.log(`Example listin at http://localhost:${port}`)
