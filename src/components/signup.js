@@ -4,7 +4,7 @@ import { json } from 'react-router-dom';
 import { useNavigate} from'react-router-dom';
 
 const Signup = (props) => {
-  const Host= "https://inote-ruja.onrender.com"
+  const Host= "https://inote-1.onrender.com"
   let history = useNavigate();
 
   const onChange = (e) => {
@@ -16,7 +16,7 @@ const Signup = (props) => {
     // props.login(e.target.email.value,e.target.password.value)
   
     // const response = await fetch(`${Host}/api/auth/createuser`, {
-      const response = await fetch(`https://inote-ruja.onrender.com/api/auth/createuser`, {
+      const response = await fetch(`https://inote-1.onrender.com/api/auth/createuser`, {
       method: "POST",  
       headers: {
         "Content-Type": "application/json",

@@ -4,7 +4,7 @@ import { useNavigate} from'react-router-dom';
 const Login = (props) => {
 
   let history = useNavigate();
-  const Host= "https://inote-ruja.onrender.com"
+  const Host= "https://inote-1.onrender.com"
   const [cradensital,setcradensital] = useState({email:"",password:"",});
     // const [password,setpassword] = useState("");
     const handlesumit = async(e) => {
