@@ -1,7 +1,11 @@
 
 const connectToMongo = require('./db');
+const mongoose = require('mongoose');
+
 var cors = require('cors')
 const connectDb = require('./db.js');
+mongoose.set('strictQuery', true); // or false, based on your preference
+
 const express = require('express')
 connectToMongo();
 const app = express() 
