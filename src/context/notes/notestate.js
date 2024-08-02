@@ -3,7 +3,7 @@ import React,{ useState,useEffect } from "react";
 import NoteContext from "./notecontext";
 
 const NoteState=(props)=>{
-  const Host= "https://inote-1.onrender.com"
+  const Host= "http://localhost:5000"
   const notesintial=[];
   //get all notesf
   const [searchTag, setSearchTag] = useState("");
