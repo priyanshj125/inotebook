@@ -4,7 +4,7 @@ import { json } from 'react-router-dom';
 import { useNavigate} from'react-router-dom';
 
 const Signup = (props) => {
-  const Host= "http://172.31.7.129:5000/"
+  const Host= "http://localhost:5000/"
   let history = useNavigate();
 
   const onChange = (e) => {
@@ -16,7 +16,7 @@ const Signup = (props) => {
     // props.login(e.target.email.value,e.target.password.value)
   
     // const response = await fetch(`${Host}/api/auth/createuser`, {
-      const response = await fetch(`http://172.31.7.129:5000/api/auth/createuser`, {
+      const response = await fetch(`http://localhost:5000/api/auth/createuser`, {
       method: "POST",  
       headers: {
         "Content-Type": "application/json",
