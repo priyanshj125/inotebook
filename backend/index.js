@@ -16,7 +16,7 @@ const User = require('./modules/User.js')
 const Notes = require('./modules/Notes.js')
 
 app.use(cors(
- { origin:'http://172.31.7.129:3000',
+ { origin:'',
   methods:["POST","GET","DELETE","PUT"],
   Credentials:true}
 ))
