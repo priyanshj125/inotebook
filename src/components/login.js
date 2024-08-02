@@ -4,7 +4,7 @@ import { useNavigate} from'react-router-dom';
 const Login = (props) => {
 
   let history = useNavigate();
-  const Host= "http://localhost:5000"
+  const Host= "http://52.66.13.75:5000"
   const [cradensital,setcradensital] = useState({email:"",password:"",});
     // const [password,setpassword] = useState("");
     const handlesumit = async(e) => {
