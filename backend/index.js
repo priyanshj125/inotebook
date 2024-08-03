@@ -16,7 +16,7 @@ const Notes = require('./modules/Notes.js')
 app.use(cors(
  { origin:'*',
   methods:["POST","GET","DELETE","PUT"],
-  Credentials:true
+  Credentials:false
 }
 ))
 // SSL options
