@@ -16,7 +16,7 @@ const Signup = (props) => {
     // props.login(e.target.email.value,e.target.password.value)
   
     // const response = await fetch(`${Host}/api/auth/createuser`, {
-      const response = await fetch(`http://localhost:5000/api/auth/createuser`, {
+      const response = await fetch(`http://13.202.59.97:5000/api/auth/createuser`, {
       method: "POST",  
       headers: {
         "Content-Type": "application/json",
